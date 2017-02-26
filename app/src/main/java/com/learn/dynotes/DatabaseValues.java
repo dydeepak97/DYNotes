@@ -18,11 +18,11 @@ public class DatabaseValues {
 
 
     //Create Table Queries
-    public static final String TABLE_NOTES_CREATE="CREATE TABLE IF NOT EXISTS" + TABLE_NOTES +
-            "(" + NOTES_ID +"INTEGER PRIMARY KEY,"+ NOTES_TITLE +"TEXT," + NOTES_DESCRIPTION + "TEXT)";
+    public static final String TABLE_NOTES_CREATE="CREATE TABLE IF NOT EXISTS " + TABLE_NOTES +
+            "(" + NOTES_ID +" INTEGER PRIMARY KEY, "+ NOTES_TITLE +" TEXT, " + NOTES_DESCRIPTION + " TEXT )";
 
     //Drop Table Queries
-    public static final String TABLE_NOTES_DROP="DROP TABLE IF EXITS" + TABLE_NOTES;
+    public static final String TABLE_NOTES_DROP="DROP TABLE IF EXITS " + TABLE_NOTES;
 
 
 
