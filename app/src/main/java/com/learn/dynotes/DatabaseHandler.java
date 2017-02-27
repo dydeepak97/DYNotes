@@ -68,5 +68,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+    public List<Note> getAllNotes(){
+
+        List<Note> note=new ArrayList<>();
+
+        SQLiteDatabase db=this.getReadableDatabase();
+
+
+    }
 
 }
