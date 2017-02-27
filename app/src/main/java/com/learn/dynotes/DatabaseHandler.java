@@ -3,6 +3,7 @@ package com.learn.dynotes;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -61,7 +62,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         SQLiteDatabase db=this.getWritableDatabase();
 
-        String deleteQuery= "DELETE FROM" + DatabaseValues.TABLE_NOTES + "WHERE " + DatabaseValues.NOTES_ID + " = '" +id + "'";
+        String deleteQuery= "DELETE FROM " + DatabaseValues.TABLE_NOTES + " WHERE " + DatabaseValues.NOTES_ID + " = '" +id + "'";
 
         db.execSQL(deleteQuery);
         db.close();
@@ -70,10 +71,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public List<Note> getAllNotes(){
 
-        List<Note> note=new ArrayList<>();
+        List<Note> notes=new ArrayList<>();
 
         SQLiteDatabase db=this.getReadableDatabase();
 
+        String selectQuery= "SELECT * FROM " + DatabaseValues.TABLE_NOTES;
+        Cursor cursor= db.rawQuery(selectQuery,null);
+
+        //looping through all rows
+        if(cursor.moveToNext()){
+            do{
+                Note note= new Note();
+                note.setId(Integer.parseInt(cursor.getString(0)));
+                note.setTitle(cursor.getString(1));
+                note.setDescription(cursor.getString(2));
+
+                notes.add(note);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return notes;
 
     }
 
