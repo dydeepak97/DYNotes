@@ -30,6 +30,7 @@
             android:gravity="start"
             android:textColor="@color/primary_text"
             android:textSize="15sp"
+            android:background="@null"
             tools:text="Exorcizamus te, omnis immundus spiritus, omnis satanica potestas omnis incursio infernalis adversarii. Omnis legio! Omnis con...potestas, omnis incursio infernalis adversarii. Omnis legio! Omnis congregatio et secta diabolica! Ergo, Draco maledicte et omnis......legio diabolica, adiuramus te! Exorcizamus te, omnis immundus spiritus, omnis satanica potestas, omnis incursio infernalis adversarii. Omnis legio! Omnis congregatio et secta diabolica! Ergo, Draco maledicte et omnis legio diabolica, adiuramus te!"/>
 
     </LinearLayout>
