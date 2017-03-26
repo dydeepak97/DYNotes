@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/title"
+            android:id="@+id/title_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/secondary_text"
@@ -24,7 +24,7 @@
             tools:text="Exorcizamus te"/>
 
         <EditText
-            android:id="@+id/content"
+            android:id="@+id/content_edit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start"
