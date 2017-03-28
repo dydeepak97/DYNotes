@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class EditNoteActivity extends Activity implements View.OnClickListener{
 
     FloatingActionButton save,cancel;
@@ -48,7 +50,7 @@ public class EditNoteActivity extends Activity implements View.OnClickListener{
                 cancel.setVisibility(View.GONE);
 
             }else {
-                Toast.makeText(this,"Invalid Parameters",Toast.LENGTH_LONG);
+                Toast.makeText(this,"Invalid Parameters",Toast.LENGTH_LONG).show();
                 super.onBackPressed();
             }
         }
@@ -68,6 +70,48 @@ public class EditNoteActivity extends Activity implements View.OnClickListener{
         }
     }
 
-    
+    private void saveNote(){
+        title=titleBox.getText().toString();
+        content=contentBox.getText().toString();
+
+        if(!isValidNote()) {
+            return;
+        }
+
+        Note note = new Note();
+        note.setTitle(title);
+        note.setDescription(content);
+
+        DatabaseHandler databaseHandler = new DatabaseHandler(this);
+        if (!isUpdateMode) {
+
+            databaseHandler.addNote(note);
+            Toast.makeText(this,"Note Added" ,Toast.LENGTH_LONG).show();
+        }
+        else{
+            note.setId(noteId);
+            databaseHandler.updateNote(note);
+            Toast.makeText(this,"Note Updated",Toast.LENGTH_LONG).show();
+        }
+
+        List<Note> notes   = databaseHandler.getAllNotes();
+        MainActivity.notesAdapter.clear();
+        MainActivity.notesAdapter.addAll(notes);
+        MainActivity.notesAdapter.notifyDataSetChanged();
+
+        super.onBackPressed();
+
+    }
+
+
+
+    private void deleteNote(){
+
+        
+    }
+
+    private Boolean isValidNote(){
+    return  true;
+    }
 
 }
