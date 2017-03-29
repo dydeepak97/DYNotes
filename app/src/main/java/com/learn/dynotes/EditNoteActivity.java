@@ -128,7 +128,8 @@ public class EditNoteActivity extends Activity implements View.OnClickListener{
 
                     }
                 })
-                .setNegativeButton("No",null);
+                .setNegativeButton("No",null)
+                .show();
 
     }
 
