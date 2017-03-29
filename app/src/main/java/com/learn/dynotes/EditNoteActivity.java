@@ -1,6 +1,8 @@
 package com.learn.dynotes;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -106,12 +108,44 @@ public class EditNoteActivity extends Activity implements View.OnClickListener{
 
 
     private void deleteNote(){
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Delete Note")
+                .setMessage("Are You sure?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseHandler databaseHandler= new DatabaseHandler(EditNoteActivity.this);
 
-        
+                        databaseHandler.deleteNote(String.valueOf(noteId));
+
+                        List<Note> notes= databaseHandler.getAllNotes();
+                        MainActivity.notesAdapter.clear();
+                        MainActivity.notesAdapter.addAll(notes);
+                        MainActivity.notesAdapter.notifyDataSetChanged();
+
+                        EditNoteActivity.this.onBackPressed();
+
+                    }
+                })
+                .setNegativeButton("No",null);
+
     }
 
     private Boolean isValidNote(){
-    return  true;
+        if(title.isEmpty()& content.isEmpty()){
+            Toast.makeText(this,"Enter Title & Description",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(title.isEmpty()){
+            Toast.makeText(this,"Enter Title",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(content.isEmpty()){
+            Toast.makeText(this,"Enter Description",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return  true;
     }
 
 }
