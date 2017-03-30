@@ -64,4 +64,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
 
     }
+
+    public void lock(View v){
+        Intent myIntent= new Intent(MainActivity.this,loginActivity.class);
+
+
+        startActivity(myIntent);
+
+    }
 }
