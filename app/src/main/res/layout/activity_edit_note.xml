@@ -21,12 +21,15 @@
             android:layout_height="wrap_content"
             android:textColor="@color/secondary_text"
             android:textSize="18sp"
+            android:hint="Enter Title"
             tools:text="Exorcizamus te"/>
 
         <EditText
             android:id="@+id/content_edit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:hint="Note Here"
+            android:paddingTop="25dp"
             android:gravity="start"
             android:textColor="@color/primary_text"
             android:textSize="15sp"

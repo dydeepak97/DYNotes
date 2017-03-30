@@ -124,7 +124,9 @@ public class EditNoteActivity extends Activity implements View.OnClickListener{
                         MainActivity.notesAdapter.addAll(notes);
                         MainActivity.notesAdapter.notifyDataSetChanged();
 
+                        Toast.makeText(EditNoteActivity.this,"Note Deleted",Toast.LENGTH_SHORT).show();
                         EditNoteActivity.this.onBackPressed();
+
 
                     }
                 })
