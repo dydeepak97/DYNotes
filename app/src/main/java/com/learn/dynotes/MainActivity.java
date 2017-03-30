@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void lock(View v){
-        Intent myIntent= new Intent(MainActivity.this,loginActivity.class);
+        Intent myIntent= new Intent(MainActivity.this,Set_Password.class);
 
 
         startActivity(myIntent);
