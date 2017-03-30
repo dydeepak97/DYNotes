@@ -61,7 +61,7 @@ public class NotesAdapter extends ArrayAdapter{
                 Note note= noteList.get(position);
 
                 bundle.putString("source","editPress");
-                bundle.putString("noteTtile", note.getTitle());
+                bundle.putString("noteTitle", note.getTitle());
                 bundle.putString("noteDescription",note.getDescription());
                 bundle.putInt("noteId",note.getId());
 
