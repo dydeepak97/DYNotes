@@ -1,4 +1,4 @@
-package com.learn.dynotes;
+package com.dydeepak97.dynotes;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.learn.dynotes;
+package com.dydeepak97.dynotes;
 
 import android.app.Activity;
 import android.app.AlertDialog;

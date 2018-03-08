@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'eatdevelopekey'
+            storeFile file('E:/Dev_Keys/android1.jks')
+            storePassword 'eatdevelopenap'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -15,6 +23,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.learn.dynotes;
+package com.dydeepak97.dynotes;
 
 import org.junit.Test;
 
