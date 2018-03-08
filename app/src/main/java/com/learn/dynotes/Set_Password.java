@@ -27,17 +27,21 @@ public class Set_Password extends AppCompatActivity {
 
         newPass=(EditText) findViewById(R.id.newPass);
         newPassword=newPass.getText().toString();
+        if(newPassword.isEmpty()){
 
-        SharedPreferences.Editor editor = logindata.edit();
+            Toast.makeText(this,"Password Changed!",Toast.LENGTH_SHORT).show();
+        }else {
 
-        editor.putString("pass",newPassword);
-        editor.putBoolean("isPassNotSet",false);
+            SharedPreferences.Editor editor = logindata.edit();
 
-        editor.commit();
+            editor.putString("pass", newPassword);
+            editor.putBoolean("isPassNotSet", false);
 
-        Toast.makeText(this,"Password Changed!",Toast.LENGTH_SHORT).show();
-        this.onBackPressed();
+            editor.commit();
 
+            Toast.makeText(this, "Password Changed!", Toast.LENGTH_SHORT).show();
+            this.onBackPressed();
+        }
 
     }
 
