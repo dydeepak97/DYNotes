@@ -22,7 +22,7 @@ public class DatabaseValues {
             "(" + NOTES_ID +" INTEGER PRIMARY KEY, "+ NOTES_TITLE +" TEXT, " + NOTES_DESCRIPTION + " TEXT )";
 
     //Drop Table Queries
-    public static final String TABLE_NOTES_DROP="DROP TABLE IF EXITS " + TABLE_NOTES;
+    public static final String TABLE_NOTES_DROP="DROP TABLE IF EXISTS " + TABLE_NOTES;
 
 
 
