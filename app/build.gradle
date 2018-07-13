@@ -10,7 +10,6 @@ android {
         }
     }
     compileSdkVersion 23
-    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.learn.dynotes"
         minSdkVersion 22

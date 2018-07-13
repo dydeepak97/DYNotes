@@ -97,8 +97,8 @@ public class EditNoteActivity extends Activity implements View.OnClickListener{
         }
 
         List<Note> notes   = databaseHandler.getAllNotes();
-        MainActivity.notesAdapter.clear();
-        MainActivity.notesAdapter.addAll(notes);
+        //MainActivity.notesAdapter.clear();
+        //MainActivity.notesAdapter.addAll(notes);
         MainActivity.notesAdapter.notifyDataSetChanged();
 
         super.onBackPressed();
@@ -120,8 +120,8 @@ public class EditNoteActivity extends Activity implements View.OnClickListener{
                         databaseHandler.deleteNote(String.valueOf(noteId));
 
                         List<Note> notes= databaseHandler.getAllNotes();
-                        MainActivity.notesAdapter.clear();
-                        MainActivity.notesAdapter.addAll(notes);
+                        //MainActivity.notesAdapter.clear();
+                        //MainActivity.notesAdapter.addAll(notes);
                         MainActivity.notesAdapter.notifyDataSetChanged();
 
                         Toast.makeText(EditNoteActivity.this,"Note Deleted",Toast.LENGTH_SHORT).show();

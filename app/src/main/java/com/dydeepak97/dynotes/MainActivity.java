@@ -3,6 +3,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHandler databaseHandler;
     public static NotesAdapter notesAdapter;
     List<Note> noteList;
-    ListView noteListVIew;
+    RecyclerView noteListVIew;
 
 
     @Override
@@ -31,12 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
         notesAdapter = new NotesAdapter(this,noteList);
 
-        noteListVIew = (ListView) findViewById(R.id.notesRecyclerView);
+        noteListVIew = (RecyclerView) findViewById(R.id.notesRecyclerView);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        noteListVIew.setLayoutManager(layoutManager);
+
         try{
             noteListVIew.setAdapter(notesAdapter);
         }catch(NullPointerException e){
             e.printStackTrace();
         }
+
+        /*
 
         noteListVIew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -44,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        */
 
     }
 
