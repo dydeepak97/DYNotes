@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NotesAdapter.ListItemClickListener{
 
     FloatingActionButton addNote;
     DatabaseHandler databaseHandler;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         databaseHandler= new DatabaseHandler(this);
         noteList = databaseHandler.getAllNotes();
 
-        notesAdapter = new NotesAdapter(this,noteList);
+        notesAdapter = new NotesAdapter(this, noteList, this);
 
         noteListVIew = (RecyclerView) findViewById(R.id.notesRecyclerView);
 
@@ -57,6 +57,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+
+
+
+                Intent editIntent= new Intent(getBaseContext(), EditNoteActivity.class);
+                Bundle bundle= new Bundle();
+
+                Note note= noteList.get(clickedItemIndex);
+
+                bundle.putString("source","editPress");
+                bundle.putString("noteTitle", note.getTitle());
+                bundle.putString("noteDescription",note.getDescription());
+                bundle.putInt("noteId",note.getId());
+
+                editIntent.putExtras(bundle);
+
+                this.startActivity(editIntent);
+
+
+
+    }
 
     public void add_but(View v){
         Intent myIntent= new Intent(MainActivity.this,EditNoteActivity.class);

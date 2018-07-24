@@ -20,10 +20,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
     private List<Note> noteList;
     private Context context;
+    final private ListItemClickListener listItemClickListener;
 
-    public NotesAdapter (Context context, List<Note> noteList){
+    public NotesAdapter (Context context, List<Note> noteList, ListItemClickListener listener ){
         this.noteList = noteList;
         this.context= context;
+        listItemClickListener = listener;
+
     }
 
 //    public NotesAdapter(Context context, List<Note> noteList) {
@@ -32,7 +35,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 //        this.context=context;
 //    }
 
-    class NoteViewHolder extends RecyclerView.ViewHolder{
+    public interface ListItemClickListener{
+        void onListItemClick(int clickedItemIndex);
+    }
+
+    class NoteViewHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
         TextView title;
         TextView description;
 
@@ -40,15 +48,30 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
             description= (TextView) itemView.findViewById(R.id.content);
+            itemView.setOnClickListener(this);
         }
 
-        void bind( int listIndex ){
+        public String getTitle(){
+            return  String.valueOf(title);
+        }
+
+        public String getDescription() {
+            return String.valueOf(description);
+        }
+
+        void bind(int listIndex ){
 
             Note note = noteList.get(listIndex);
 
             title.setText(note.getTitle());
             description.setText(note.getDescription());
 
+        }
+
+        @Override
+        public void onClick(View view) {
+            int clickedPosition = getAdapterPosition();
+            listItemClickListener.onListItemClick(clickedPosition);
         }
     }
 
