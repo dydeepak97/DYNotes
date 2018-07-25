@@ -96,10 +96,11 @@ public class EditNoteActivity extends Activity implements View.OnClickListener{
             Toast.makeText(this,"Note Updated",Toast.LENGTH_LONG).show();
         }
 
-        List<Note> notes   = databaseHandler.getAllNotes();
-        //MainActivity.notesAdapter.clear();
+        MainActivity.noteList   = databaseHandler.getAllNotes();
+        //MainActivity.notesAdapter.clear()
         //MainActivity.notesAdapter.addAll(notes);
         MainActivity.notesAdapter.notifyDataSetChanged();
+        finish();
 
         super.onBackPressed();
 

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements NotesAdapter.List
     FloatingActionButton addNote;
     DatabaseHandler databaseHandler;
     public static NotesAdapter notesAdapter;
-    List<Note> noteList;
+    public static List<Note> noteList;
     RecyclerView noteListVIew;
 
 
@@ -55,6 +55,12 @@ public class MainActivity extends AppCompatActivity implements NotesAdapter.List
 
         */
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        notesAdapter.notifyDataSetChanged();
     }
 
     @Override
