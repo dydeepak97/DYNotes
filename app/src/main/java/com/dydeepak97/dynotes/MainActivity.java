@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements NotesAdapter.List
     @Override
     protected void onResume() {
         super.onResume();
+        noteList.clear();
+        noteList.addAll(databaseHandler.getAllNotes());
         notesAdapter.notifyDataSetChanged();
     }
 

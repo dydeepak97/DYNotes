@@ -12,6 +12,8 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     tools:listitem="@layout/notes_view_item"
+    android:clipToPadding="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     />
 
 
