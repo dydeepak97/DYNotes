@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'key0'
-            keyPassword 'eatdevelopekey'
-            storeFile file('E:/Dev_Keys/android1.jks')
-            storePassword 'eatdevelopenap'
-        }
-    }
+//    signingConfigs {
+//        config {
+//            keyAlias 'key0'
+//            keyPassword 'eatdevelopekey'
+//            storeFile file('E:/Dev_Keys/android1.jks')
+//            storePassword 'eatdevelopenap'
+//        }
+//    }
     compileSdkVersion 23
     defaultConfig {
         applicationId "com.learn.dynotes"
@@ -19,11 +19,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
-        }
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.config
+//        }
+
+            debug {}
     }
 }
 
