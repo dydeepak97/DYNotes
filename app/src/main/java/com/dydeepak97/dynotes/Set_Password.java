@@ -29,7 +29,7 @@ public class Set_Password extends AppCompatActivity {
         newPassword=newPass.getText().toString();
         if(newPassword.isEmpty()){
 
-            Toast.makeText(this,"Password Changed!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Enter a password!",Toast.LENGTH_SHORT).show();
         }else {
 
             SharedPreferences.Editor editor = logindata.edit();
