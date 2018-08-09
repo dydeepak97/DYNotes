@@ -55,4 +55,4 @@ deploy:
   file: /home/travis/build/dydeepak97/DYNotes/app/build/outputs/apk/release/*
   on:
     repo: dydeepak97/DYNotes
-    tags: true
+    tags: false
