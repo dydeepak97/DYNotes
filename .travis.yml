@@ -16,7 +16,9 @@ env:
         - ANDROID_API=23
         - ANDROID_BUILD_TOOLS=26.0.2
         - ADB_INSTALL_TIMEOUT=5
-
+        - secure: Dm4jpvu1jMOQYTqO4pavvXqc3/TTDJ8Gesdy9coRrw+P0IUwwCsG3HEO+sk5MnEycZ4iCaR0OjPPC4nE9ThaE1Jx1QxYNYvVQVAwsdWWlYxdFngF79FgnyEZ4rAkJA7RcBe5OyL9xc6KaM5cRM609MaQd0g2vNRENrLJoOghkTWR1+ZEaOIbPmLhqhpiuf480vZZHHllw0YrdiH9+E6h/7bE2opn06nnuW8a2SGs8+/ACIv6vO51l5epkVhdqIu49Eo6h0xXy4kM+R6uVboXmWLg55spOxs9ywb+KoVcv0f44e4bfJuLLYTztw8i0tW3t+IuFuCD4Y3htEnUKE0vWxr4qcOOzl0agZZM51nkBYpTUDPceyxa2NI7NAeLONGzEfbtj6ne+IVgiayfigapkOFNipcF+w/fn6k2TaTXoBewFAX1+2kzhXWtQ8CjRz/yUbE9uDRxr6YnMFy1dFYmmjI20V4Hb6M22/lWPWI3p64nQM81K3G+k4Szf5ovVYr6KjfROiaDDV5aq8W4dHhC1ElPcR0vYJ9o+E1uul18zLZgY4Vknjip81RaZQW19rHuwOYsznemgE8cfuvvAUK1gHg095UYo8NUM/cTGBSRQPwlSXW63hAqqJxJxMQUfxzp62hfvAvBbNIyMPXZdUQOQ1WdXsweA2kV+Pn4t8nE+6s=
+        - secure: RuTXKeTgEHn9mu+GCVj5mWcL47GI2gArW19Bs57sHIV2rW3uiowPEwLJcBmXWn4oZF110mqsOf+B5cEw8XNDcFDnsoMj/vl0YRLdNGuTfxy1l5RCTR6U+I75D/j6xEHEnQL+4pRobx7qnUOhs82H/BJjL1SMNB/KHrTj9cliHt//5G9s8/A/Lfzcy5FpxJoQcIG5/yzHimOUUmi0cTFYCBgpacZCpvwnmdzP7NRepIjr5Wwq6Q8E1GtpLmnWBUyAhjgj+KtkbR+7PvbBFkH8gsqOQHyc9ENlpL0L2nkLmK7s2Y2ZYh3QzsziYGCSO6aDS4ExvdPUX8NTC+tc8JQ0Vk6UV+eE7KIIIEyknlvpXC6mLRuP5LpmM4/okB9Au4Lf/jj5FcQGWgrbKlUTnjpvm0PxfsE9Cz+oRYIFQzXV4cElUtBR4lfLCS6fhhPRlO3pTji+ujftLZtWkYxrmj4O+eTq3/iqFmYKabZI/66KVOoSxhJ+r8kRzhBLgOtnIEH7+dx9hSArnGPyVHH6DYngw0dswxFhbLTAymqivyepoKjGYeFB4uANCMNcQwpkJ3k/FkhSmJPuwk7fhlL+2jtfiDaZ4uoq7gTNxI6OmSI5v6lS4F4ULIvAueNxVFskwTqKEE/IR9BOkEaJRVr3OHQrx05xfXNASmS/ONDrsL76Gzs=
+        
 android:
     components:
         - tools
@@ -42,3 +44,15 @@ before_install:
 
 script:
     - './gradlew clean build -PdisablePreDex --stacktrace'
+    
+deploy:
+  provider: releases
+  skip_cleanup: true
+  overwrite: true
+  api_key:
+    secure: UEj3lBbGMl1hGsNIgZXaKXYiUFJ+tPSnxz2m8LVGF4FQyfW4NvyOBP6NVz4MdTfH9/aOcrL2fUWjbwF+G+NVtH8UpwsdHDF1mNexAcTXp10OoU53zJ76adSDTslRUfRPFWrp3+Hmhwczw6giMiJsm+8Ppd7upks9qhcgyE1ldRv9N9y7MNCaBXbg69CFD0hiQjnO7iJsBGoCjBj4yuXqFwcJLtBTl9kBTlvMweB4Otv/S0f7IYKIDI2KbXPrc87pShYTfFOqFZYnjp/Xo4sLarMHGdvTwdzc66+oPTVZ1uNzkjfrB+7HJBEFFgJDdJDddziIJ9q/O73OY55Q6AoqRs/oaPGYjeqp8/k7RDZ5Kov8QukB5/O4zE3JxbmML//8FDuPAawjehftsj5rmbRj4F0xexOaVssQukn3rQK1o8fgJvdsJ6sLxYs14kU7ass6MQDpfQy6bmFZre3PBEtc+OBn8nu87h2pTw6kopDDWXtds9r4XMCr7jQQsAY7wHb8uiHUOSr6fGJeN4yox5lTA+16wew3gfpiaHrN8r1UX9AMxZd7sNOME9KRO1sqPLJ6JlIQLevUe1YmS6aNjcTIsPkKmUEsoiBLQG/WihBjwuT2Lih0euZ/HaRe3otkFYrMUfgseUBD2L0A4AnGfJg46g2B+pR1bxPlWJhRRwagArg=
+  file_glob: true
+  file: /home/travis/build/dydeepak97/DYNotes/app/build/outputs/apk/release/*
+  on:
+    repo: dydeepak97/DYNotes
+    tags: true
