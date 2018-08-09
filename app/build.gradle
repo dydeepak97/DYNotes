@@ -9,7 +9,7 @@ android {
         config {
             keyAlias 'key0'
             keyPassword keypass
-            storeFile file('$rootDir/res/keys/android1.jks')
+            storeFile file("$rootDir/res/keys/android1.jks")
             storePassword storepass
         }
     }
