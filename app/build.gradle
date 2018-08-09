@@ -1,14 +1,18 @@
 apply plugin: 'com.android.application'
 
+def isTravisCI = System.getenv('TRAVIS') ? true : false
+def keypass = hasProperty('KEYPASSWORD') ? KEYPASSWORD : System.getenv('KEYPASSWORD')
+def storepass = hasProperty('STOREPASSWORD') ? STOREPASSWORD : System.getenv('STOREPASSWORD')
+
 android {
-//    signingConfigs {
-//        config {
-//            keyAlias 'key0'
-//            keyPassword 'eatdevelopekey'
-//            storeFile file('E:/Dev_Keys/android1.jks')
-//            storePassword 'eatdevelopenap'
-//        }
-//    }
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword keypass
+            storeFile file('$rootDir/res/keys/android1.jks')
+            storePassword storepass
+        }
+    }
     compileSdkVersion 23
     defaultConfig {
         applicationId "com.learn.dynotes"
@@ -19,13 +23,24 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.config
-//        }
 
-            debug {}
+        debug {
+            versionNameSuffix '-debug'
+        }
+
+        if (isTravisCI) {
+            release {
+                // minifyEnabled true
+                // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                versionNameSuffix '-release'
+                signingConfig signingConfigs.config
+                debuggable true
+                jniDebuggable false
+                renderscriptDebuggable false
+                zipAlignEnabled true
+            }
+        }
+
     }
 }
 
