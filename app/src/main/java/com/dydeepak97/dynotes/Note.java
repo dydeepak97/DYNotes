@@ -1,6 +1,11 @@
 package com.dydeepak97.dynotes;
 
 
+/* Note id: int
+   Note Title: String
+   NOte Description: String
+ */
+
 public class Note {
 
     private int id;
