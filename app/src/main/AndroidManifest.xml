@@ -9,7 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.dydeepak97.dynotes.MainActivity"></activity>
-        <activity android:name="com.dydeepak97.dynotes.EditNoteActivity" />
+        <activity
+            android:name="com.dydeepak97.dynotes.EditNoteActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.dydeepak97.dynotes.loginActivity"
             android:noHistory="true">
@@ -18,9 +20,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            >
         </activity>
-        >
         <activity android:name="com.dydeepak97.dynotes.Set_Password"></activity>
     </application>
 
